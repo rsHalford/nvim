@@ -11,7 +11,7 @@ local C = function(cmd) return '<CMD>' .. cmd .. '<CR>' end
 _G.Config.leader_group_clues = {
   { mode = 'n', keys = L('g'), desc = 'Git' },
   { mode = 'n', keys = L('o'), desc = 'Operators' },
-  -- { mode = 'n', keys = L('t'), desc = 'Toggle' },
+  { mode = 'n', keys = L('t'), desc = 'Toggle' },
   -- { mode = 'n', keys = L('v'), desc = 'Visits' },
 }
 
@@ -47,6 +47,8 @@ map({ 'n' }, L('p'), C('lua MiniExtra.pickers.oldfiles()'), 'Open previous files
 map({ 'n' }, L('r'), C('lua vim.lsp.buf.rename()'), 'Rename symbol')
 map({ 'n' }, L('s'), C('lua MiniExtra.pickers.lsp({scope="document_symbol"})'), 'Open symbol picker')
 map({ 'n' }, L('S'), C('lua MiniExtra.pickers.lsp({scope="workspace_symbol"})'), 'Open workspace symbol picker')
+map({ 'n' }, L('ti'), C('lua Config.toggle_inlay_hints()'), 'Toggle inlay hints')
+map({ 'n' }, L('tq'), C('lua Config.toggle_quickfix()'), 'Toggle quickfix')
 map({ 'n' }, L("'"), C('lua MiniPick.builtin.resume()'), 'Open last picker')
 map({ 'n' }, L('"'), C('lua MiniExtra.pickers.registers()'), 'Open registers picker')
 map({ 'n' }, L('/'), C('lua MiniPick.builtin.grep_live()'), 'Open ripgrep picker')
