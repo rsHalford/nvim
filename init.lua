@@ -24,7 +24,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 now(function() require('settings') end)
 now(function() require('mappings') end)
 now(function() require('functions') end)
--- now(function() require('autocmds') end)
+now(function() require('autocmds') end)
 
 add({ name = 'mini.nvim' })
 

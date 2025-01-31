@@ -22,13 +22,12 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.mouse = 'a'
 vim.opt.number = true
-vim.opt.path:append '**'
+vim.opt.path:append('**')
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
 vim.opt.shiftwidth = 4
-vim.opt.shortmess:append 'c'
+vim.opt.shortmess:append('c')
 vim.opt.showmode = false
-vim.opt.signcolumn = 'no'
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.softtabstop = 2
