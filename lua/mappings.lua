@@ -21,12 +21,12 @@ _G.Config.leader_group_clues = {
 
 -- TODO: Organise
 -- NOTE: Tab toggles preview, <C-k> general information about picker state
-map({ 'n' }, 'gd', C('lua MiniExtra.pickers.lsp({scope="definition})'), 'Goto source definition')
-map({ 'n' }, 'gD', C('lua MiniExtra.pickers.lsp({scope="declaration})'), 'Goto symbol declaration')
-map({ 'n' }, 'gi', C('lua MiniExtra.pickers.lsp({scope="implementation})'), 'Goto implementation')
-map({ 'n' }, 'gr', C('lua MiniExtra.pickers.lsp({scope="references"})'), 'Goto references')
-map({ 'n' }, 'gT', C('lua MiniExtra.pickers.lsp({scope="type_definition})'), 'Goto type definition')
-map({ 'n' }, 'gs', C('lua Config.new_scratch_buffer()'), 'Goto scratch buffer')
+map({ 'n' }, 'gd', C('lua MiniExtra.pickers.lsp({scope="definition})'), 'Go to source definition')
+map({ 'n' }, 'gD', C('lua MiniExtra.pickers.lsp({scope="declaration})'), 'Go to symbol declaration')
+map({ 'n' }, 'gi', C('lua MiniExtra.pickers.lsp({scope="implementation})'), 'Go to implementation')
+map({ 'n' }, 'gr', C('lua MiniExtra.pickers.lsp({scope="references"})'), 'Go to references')
+map({ 'n' }, 'gT', C('lua MiniExtra.pickers.lsp({scope="type_definition})'), 'Go to type definition')
+map({ 'n' }, 'gs', C('lua Config.new_scratch_buffer()'), 'Go to scratch buffer')
 map({ 'n' }, 'zS', C('lua MiniExtra.pickers.spellsuggest()'), 'Open spell suggestions picker')
 map({ 'n' }, '-', C('lua MiniFiles.open()'), 'Open parent directory')
 map({ 'n' }, L('a'), C('lua vim.lsp.buf.code_action()'), 'Perform code action')
