@@ -330,6 +330,7 @@ later(function()
       json = { 'jq' },
       lua = { 'stylua' },
       nix = { 'nixfmt' },
+      ocaml = { 'ocamlformat' },
       sh = { 'shfmt' },
       sql = { 'sql_formatter' },
       toml = { 'taplo' },
@@ -410,6 +411,7 @@ now_if_args(function()
     },
   })
 
+  lspconfig.ocamllsp.setup({ on_attach = custom_on_attach })
   lspconfig.taplo.setup({ on_attach = custom_on_attach })
   lspconfig.templ.setup({ on_attach = custom_on_attach })
 end)
