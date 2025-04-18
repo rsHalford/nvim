@@ -134,17 +134,8 @@ end)
 
 later(function() require('mini.comment').setup() end)
 
-later(function()
+now(function()
   require('mini.completion').setup({
-    lsp_completion = {
-      source_func = 'omnifunc',
-      auto_setup = false,
-      process_items = function(items, base)
-        -- Don't show 'Text' and 'Snippet' suggestions
-        items = vim.tbl_filter(function(x) return x.kind ~= 1 and x.kind ~= 15 end, items)
-        return MiniCompletion.default_process_items(items, base)
-      end,
-    },
     window = {
       info = { border = 'single' },
       signature = { border = 'single' },
@@ -228,8 +219,8 @@ end)
 
 later(function()
   local snippets = require('mini.snippets')
-  local config_path = vim.fn.stdpath('config')
   local gen_loader = snippets.gen_loader
+  local config_path = vim.fn.stdpath('config')
 
   snippets.setup({
     snippets = {
@@ -243,6 +234,8 @@ later(function()
     --   jump_prev = '<C-p>',
     -- },
   })
+
+  MiniSnippets.start_lsp_server()
 end)
 
 later(function() require('mini.splitjoin').setup() end)
@@ -350,7 +343,6 @@ later(function()
   })
 end)
 
--- Language server configurations =============================================
 now_if_args(function()
   add('neovim/nvim-lspconfig')
 
@@ -407,6 +399,7 @@ now_if_args(function()
             'MiniIcons',
             'MiniMisc',
             'MiniPick',
+            'MiniSnippets',
           },
         },
         workspace = {
