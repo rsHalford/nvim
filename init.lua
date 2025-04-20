@@ -347,7 +347,18 @@ end)
 now_if_args(function()
   add('neovim/nvim-lspconfig')
 
-  local custom_on_attach = function(client, buf_id) vim.bo[buf_id].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp' end
+  local custom_on_attach = function(client, buf_id)
+    vim.bo[buf_id].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
+
+    if client.supports_method({ method = 'code_lens' }) then
+      local codelens = vim.api.nvim_create_augroup('LSPCodeLens', { clear = true })
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave', 'CursorHold' }, {
+        group = codelens,
+        callback = function() vim.lsp.codelens.refresh() end,
+        buffer = buf_id,
+      })
+    end
+  end
 
   local lspconfig = require('lspconfig')
 
@@ -411,9 +422,17 @@ now_if_args(function()
     },
   })
 
-  lspconfig.ocamllsp.setup({ on_attach = custom_on_attach })
+  lspconfig.ocamllsp.setup({
+    on_attach = function(client, bufnr) custom_on_attach(client, bufnr) end,
+    settings = {
+      codelens = { enable = true },
+      syntaxDocumentation = { enable = true },
+    },
+  })
+
   lspconfig.taplo.setup({ on_attach = custom_on_attach })
   lspconfig.templ.setup({ on_attach = custom_on_attach })
+  lspconfig.zls.setup({ on_attach = custom_on_attach })
 end)
 
 later(function() add('rafamadriz/friendly-snippets') end)
