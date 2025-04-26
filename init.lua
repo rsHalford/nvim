@@ -53,12 +53,14 @@ end)
 
 now(function() vim.cmd('colorscheme kanagawa') end)
 
-now(function()
-  require('mini.basics').setup({
-    options = { extra_ui = true, win_borders = 'single' },
-    mappings = { windows = true },
-  })
-end)
+now(
+  function()
+    require('mini.basics').setup({
+      options = { extra_ui = true, win_borders = 'single' },
+      mappings = { windows = true },
+    })
+  end
+)
 
 now(function() require('mini.sessions').setup() end)
 now(function() require('mini.statusline').setup() end)
@@ -149,23 +151,27 @@ end)
 
 later(function() require('mini.cursorword').setup() end)
 
-later(function()
-  require('mini.diff').setup({
-    mappings = {
-      apply = '<leader>ga',
-      reset = '<leader>gr',
-    },
-  })
-end)
+later(
+  function()
+    require('mini.diff').setup({
+      mappings = {
+        apply = '<leader>ga',
+        reset = '<leader>gr',
+      },
+    })
+  end
+)
 
-later(function()
-  require('mini.files').setup({
-    mappings = {
-      close = '<Esc>',
-    },
-    windows = { preview = true },
-  })
-end)
+later(
+  function()
+    require('mini.files').setup({
+      mappings = {
+        close = '<Esc>',
+      },
+      windows = { preview = true },
+    })
+  end
+)
 
 later(function() require('mini.git').setup() end)
 
