@@ -293,6 +293,7 @@ now_if_args(function()
     'c',
     'cpp',
     'css',
+    'embedded_template',
     'go',
     'html',
     'javascript',
@@ -302,6 +303,7 @@ now_if_args(function()
     'markdown_inline',
     'python',
     'regex',
+    'ruby',
     'rust',
     'toml',
     'tsx',
@@ -343,6 +345,7 @@ later(function()
       lua = { 'stylua' },
       nix = { 'nixfmt' },
       ocaml = { 'ocamlformat' },
+      ruby = { 'rubocop' },
       sh = { 'shfmt' },
       sql = { 'sql_formatter' },
       toml = { 'taplo' },
@@ -450,6 +453,7 @@ now_if_args(function()
     },
   })
 
+  lsp_add('ruby_lsp', { on_attch = custom_on_attach })
   lsp_add('taplo', { on_attach = custom_on_attach })
   lsp_add('templ', { on_attach = custom_on_attach })
   lsp_add('zls', { on_attach = custom_on_attach })
