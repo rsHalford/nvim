@@ -72,7 +72,7 @@ now(function()
       return suf3 ~= 'scm' and suf3 ~= 'txt' and suf3 ~= 'yml' and suf4 ~= 'json' and suf4 ~= 'yaml'
     end,
   })
-  MiniIcons.mock_nvim_web_devicons()
+  later(MiniIcons.mock_nvim_web_devicons())
   later(MiniIcons.tweak_lsp_king)
 end)
 
@@ -356,7 +356,12 @@ later(function()
 end)
 
 now_if_args(function()
-  add('neovim/nvim-lspconfig')
+  add('neovim/nvim-lspconfig') -- required until util functions are upstreamed
+
+  local function lsp_add(name, config)
+    vim.lsp.config(name, config)
+    vim.lsp.enable(name)
+  end
 
   local custom_on_attach = function(client, buf_id)
     vim.bo[buf_id].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
@@ -371,11 +376,15 @@ now_if_args(function()
     end
   end
 
-  local lspconfig = require('lspconfig')
+  lsp_add('bashls', { on_attach = custom_on_attach })
+  lsp_add('biome', { on_attach = custom_on_attach })
 
-  lspconfig.elixirls.setup({ on_attach = custom_on_attach })
+  lsp_add('elixirls', {
+    on_attach = custom_on_attach,
+    cmd = { 'elixir-ls' },
+  })
 
-  lspconfig.gopls.setup({
+  lsp_add('gopls', {
     on_attach = custom_on_attach,
     settings = {
       gopls = {
@@ -397,11 +406,11 @@ now_if_args(function()
     },
   })
 
-  lspconfig.lua_ls.setup({
+  lsp_add('lua_ls', {
     on_attach = function(client, bufnr)
       custom_on_attach(client, bufnr)
 
-      client.server_capabilities.completionProvider.triggerCharacters = { '.', ':' }
+      client.server_capabilities.completionProvider.triggerCharacters = { '.', ':', '#', '(' }
     end,
     settings = {
       Lua = {
@@ -433,7 +442,7 @@ now_if_args(function()
     },
   })
 
-  lspconfig.ocamllsp.setup({
+  lsp_add('ocamllsp', {
     on_attach = function(client, bufnr) custom_on_attach(client, bufnr) end,
     settings = {
       codelens = { enable = true },
@@ -441,9 +450,9 @@ now_if_args(function()
     },
   })
 
-  lspconfig.taplo.setup({ on_attach = custom_on_attach })
-  lspconfig.templ.setup({ on_attach = custom_on_attach })
-  lspconfig.zls.setup({ on_attach = custom_on_attach })
+  lsp_add('taplo', { on_attach = custom_on_attach })
+  lsp_add('templ', { on_attach = custom_on_attach })
+  lsp_add('zls', { on_attach = custom_on_attach })
 end)
 
 later(function() add('rafamadriz/friendly-snippets') end)
