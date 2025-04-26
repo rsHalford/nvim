@@ -333,6 +333,7 @@ later(function()
     formatters_by_ft = {
       css = { 'biome' },
       elixir = { 'mix' },
+      eruby = { 'erb_format' },
       go = { 'goimports', 'gofmt' },
       javascript = { 'biome' },
       json = { 'jq' },
@@ -380,6 +381,8 @@ now_if_args(function()
     on_attach = custom_on_attach,
     cmd = { 'elixir-ls' },
   })
+
+  lsp_add('emmet_language_server', { on_attach = custom_on_attach })
 
   lsp_add('gopls', {
     on_attach = custom_on_attach,
