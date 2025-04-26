@@ -251,9 +251,11 @@ later(function()
   local lint = require('lint')
 
   lint.linters_by_ft = {
+    css = { 'biomejs' },
     elixir = { 'credo' },
     go = { 'golangcilint' },
-    json = { 'jsonlint' },
+    javascript = { 'biomejs' },
+    -- json = { 'jsonlint' },
     nix = { 'nix' },
     ruby = { 'rubocop' },
     sh = { 'shellcheck' },
@@ -325,8 +327,10 @@ later(function()
     },
 
     formatters_by_ft = {
+      css = { 'biome' },
       elixir = { 'mix' },
       go = { 'goimports', 'gofmt' },
+      javascript = { 'biome' },
       json = { 'jq' },
       lua = { 'stylua' },
       nix = { 'nixfmt' },
@@ -336,7 +340,6 @@ later(function()
       toml = { 'taplo' },
       yaml = { 'yq' },
       zig = { 'zigfmt' },
-      javascript = { 'prettier' },
       ['_'] = { 'trim_whitespace' },
     },
 
