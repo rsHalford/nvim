@@ -88,6 +88,8 @@ later(function()
   })
 end)
 
+later(function() require('mini.align').setup() end)
+
 later(function() require('mini.bracketed').setup() end)
 
 later(function() require('mini.bufremove').setup() end)
@@ -445,5 +447,3 @@ now_if_args(function()
 end)
 
 later(function() add('rafamadriz/friendly-snippets') end)
-
--- vim: ts=2 sts=2 sw=2 et

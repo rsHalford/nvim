@@ -21,44 +21,41 @@ _G.Config.leader_group_clues = {
 
 -- TODO: Organise
 -- NOTE: Tab toggles preview, <C-k> general information about picker state
-map({ 'n' }, 'gd', C('lua MiniExtra.pickers.lsp({scope="definition"})'), 'Go to source definition')
-map({ 'n' }, 'gD', C('lua MiniExtra.pickers.lsp({scope="declaration"})'), 'Go to symbol declaration')
-map({ 'n' }, 'gi', C('lua MiniExtra.pickers.lsp({scope="implementation"})'), 'Go to implementation')
-map({ 'n' }, 'gr', C('lua MiniExtra.pickers.lsp({scope="references"})'), 'Go to references')
-map({ 'n' }, 'gT', C('lua MiniExtra.pickers.lsp({scope="type_definition"})'), 'Go to type definition')
-map({ 'n' }, 'gs', C('lua Config.new_scratch_buffer()'), 'Go to scratch buffer')
-map({ 'n' }, 'zS', C('lua MiniExtra.pickers.spellsuggest()'), 'Open spell suggestions picker')
-map({ 'n' }, '-', C('lua MiniFiles.open()'), 'Open parent directory')
-map({ 'n' }, L('a'), C('lua vim.lsp.buf.code_action()'), 'Perform code action')
-map({ 'n' }, L('b'), C('lua MiniPick.builtin.buffers()'), 'Open buffers picker')
-map({ 'n' }, L('c'), C('lua MiniExtra.pickers.hipatterns()'), 'Open comment picker')
-map({ 'n' }, L('C'), C('lua MiniExtra.pickers.commands()'), 'Open commands picker')
-map({ 'n' }, L('d'), C('lua MiniExtra.pickers.diagnostic({scope="current"})'), 'Open diagnostics picker')
-map({ 'n' }, L('D'), C('lua MiniExtra.pickers.diagnostic({scope="all"})'), 'Open workspace diagnostics picker')
-map({ 'n' }, L('f'), C('lua MiniPick.builtin.files()'), 'Open file picker')
-map({ 'n' }, L('F'), C('lua MiniExtra.pickers.git_files()'), 'Open git file picker')
-map({ 'n' }, L('gb'), C('lua MiniExtra.pickers.git_branches()'), 'Open git branch picker')
-map({ 'n' }, L('gc'), C('lua MiniExtra.pickers.git_commits()'), 'Open git commit picker')
-map({ 'n' }, L('gu'), C('lua Config.pick_modified_untracked()'), 'Open uncommited file picker')
-map({ 'n' }, L('h'), C('lua MiniPick.builtin.help()'), 'Open help picker')
-map({ 'n' }, L('k'), C('lua MiniExtra.pickers.keymaps()'), 'Open keymap picker')
-map({ 'n' }, L('u'), C('lua MiniDeps.update()'), 'Update dependencies')
-map({ 'n' }, L('p'), C('lua MiniExtra.pickers.oldfiles()'), 'Open previous files picker')
-map({ 'n' }, L('r'), C('lua vim.lsp.buf.rename()'), 'Rename symbol')
-map({ 'n' }, L('s'), C('lua MiniExtra.pickers.lsp({scope="document_symbol"})'), 'Open symbol picker')
-map({ 'n' }, L('S'), C('lua MiniExtra.pickers.lsp({scope="workspace_symbol"})'), 'Open workspace symbol picker')
-map({ 'n' }, L('ti'), C('lua Config.toggle_inlay_hints()'), 'Toggle inlay hints')
-map({ 'n' }, L('tq'), C('lua Config.toggle_quickfix()'), 'Toggle quickfix')
-map({ 'n' }, L("'"), C('lua MiniPick.builtin.resume()'), 'Open last picker')
-map({ 'n' }, L('"'), C('lua MiniExtra.pickers.registers()'), 'Open registers picker')
-map({ 'n' }, L('/'), C('lua MiniPick.builtin.grep_live()'), 'Open ripgrep picker')
+--stylua: ignore start
+map({ 'n' }, 'gd',    C('lua MiniExtra.pickers.lsp({scope="definition"})'),       'Go to source definition')
+map({ 'n' }, 'gD',    C('lua MiniExtra.pickers.lsp({scope="declaration"})'),      'Go to symbol declaration')
+map({ 'n' }, 'gi',    C('lua MiniExtra.pickers.lsp({scope="implementation"})'),   'Go to implementation')
+map({ 'n' }, 'gr',    C('lua MiniExtra.pickers.lsp({scope="references"})'),       'Go to references')
+map({ 'n' }, 'gT',    C('lua MiniExtra.pickers.lsp({scope="type_definition"})'),  'Go to type definition')
+map({ 'n' }, 'gs',    C('lua Config.new_scratch_buffer()'),                       'Go to scratch buffer')
+map({ 'n' }, 'zS',    C('lua MiniExtra.pickers.spellsuggest()'),                  'Open spell suggestions picker')
+map({ 'n' }, '-',     C('lua MiniFiles.open()'),                                  'Open parent directory')
+map({ 'n' }, L('a'),  C('lua vim.lsp.buf.code_action()'),                         'Perform code action')
+map({ 'n' }, L('b'),  C('lua MiniPick.builtin.buffers()'),                        'Open buffers picker')
+map({ 'n' }, L('c'),  C('lua MiniExtra.pickers.hipatterns()'),                    'Open comment picker')
+map({ 'n' }, L('C'),  C('lua MiniExtra.pickers.commands()'),                      'Open commands picker')
+map({ 'n' }, L('d'),  C('lua MiniExtra.pickers.diagnostic({scope="current"})'),   'Open diagnostics picker')
+map({ 'n' }, L('D'),  C('lua MiniExtra.pickers.diagnostic({scope="all"})'),       'Open workspace diagnostics picker')
+map({ 'n' }, L('f'),  C('lua MiniPick.builtin.files()'),                          'Open file picker')
+map({ 'n' }, L('F'),  C('lua MiniExtra.pickers.git_files()'),                     'Open git file picker')
+map({ 'n' }, L('gb'), C('lua MiniExtra.pickers.git_branches()'),                  'Open git branch picker')
+map({ 'n' }, L('gc'), C('lua MiniExtra.pickers.git_commits()'),                   'Open git commit picker')
+map({ 'n' }, L('gu'), C('lua Config.pick_modified_untracked()'),                  'Open uncommited file picker')
+map({ 'n' }, L('h'),  C('lua MiniPick.builtin.help()'),                           'Open help picker')
+map({ 'n' }, L('k'),  C('lua MiniExtra.pickers.keymaps()'),                       'Open keymap picker')
+map({ 'n' }, L('u'),  C('lua MiniDeps.update()'),                                 'Update dependencies')
+map({ 'n' }, L('p'),  C('lua MiniExtra.pickers.oldfiles()'),                      'Open previous files picker')
+map({ 'n' }, L('r'),  C('lua vim.lsp.buf.rename()'),                              'Rename symbol')
+map({ 'n' }, L('s'),  C('lua MiniExtra.pickers.lsp({scope="document_symbol"})'),  'Open symbol picker')
+map({ 'n' }, L('S'),  C('lua MiniExtra.pickers.lsp({scope="workspace_symbol"})'), 'Open workspace symbol picker')
+map({ 'n' }, L('ti'), C('lua Config.toggle_inlay_hints()'),                       'Toggle inlay hints')
+map({ 'n' }, L('tq'), C('lua Config.toggle_quickfix()'),                          'Toggle quickfix')
+map({ 'n' }, L("'"),  C('lua MiniPick.builtin.resume()'),                         'Open last picker')
+map({ 'n' }, L('"'),  C('lua MiniExtra.pickers.registers()'),                     'Open registers picker')
+map({ 'n' }, L('/'),  C('lua MiniPick.builtin.grep_live()'),                      'Open ripgrep picker')
+--stylua: ignore end
 
--- Better yoinking
-map({ 'n' }, L('y'), '"+y', 'Yank movement to clipboard')
-map({ 'v' }, L('y'), '"+y', 'Yank selection to clipboard')
-map({ 'n' }, L('Y'), 'gg"+yG', 'Yank file to clipboard')
-
--- Center Next
+-- Center next
 map({ 'n' }, 'n', 'nzzzv', 'Centre next match')
 map({ 'n' }, 'N', 'Nzzzv', 'Centre prev match')
 map({ 'n' }, '<C-u>', '<C-u>zz', 'Centre prev up')
@@ -74,12 +71,20 @@ map({ 'i' }, '{', '{<c-g>u', '')
 map({ 'i' }, '(', '(<c-g>u', '')
 
 -- Jumplist
-map({ 'n' }, 'k', [[(v:count > 5 ? "m'" . v:count : "") . 'k']], '', { noremap = true, desc = 'Mark to jumplist', expr = true, silent = true })
-map({ 'n' }, 'j', [[(v:count > 5 ? "m'" . v:count : "") . 'j']], '', { noremap = true, desc = 'Mark to jumplist', expr = true, silent = true })
-
--- Remap for word wrap
-map({ 'n' }, 'k', [[v:count == 0 ? 'gk' : 'k']], '', { desc = 'Moves cursor up a line, including wrapped lines', expr = true, silent = true })
-map({ 'n' }, 'j', [[v:count == 0 ? 'gj' : 'j']], '', { desc = 'Moves cursor down a line, including wrapped lines', expr = true, silent = true })
+map(
+  { 'n' },
+  'k',
+  [[(v:count > 5 ? "m'" . v:count : "") . 'k']],
+  '',
+  { noremap = true, desc = 'Mark to jumplist', expr = true, silent = true }
+)
+map(
+  { 'n' },
+  'j',
+  [[(v:count > 5 ? "m'" . v:count : "") . 'j']],
+  '',
+  { noremap = true, desc = 'Mark to jumplist', expr = true, silent = true }
+)
 
 -- Moving lines
 map({ 'n' }, 'J', 'mzJ`z', 'Concatenate with line below')
@@ -115,5 +120,3 @@ map({ 'c' }, 'WQ', 'wq', 'write and quit')
 map({ 'c' }, 'WQ', 'wq', 'write and quit')
 map({ 'c' }, 'Q', 'q', 'quit')
 map({ 'c' }, 'Q!', 'q!', 'quit with unsaved changes')
-
--- vim: ts=2 sts=2 sw=2 et
