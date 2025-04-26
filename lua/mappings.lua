@@ -55,6 +55,11 @@ map({ 'n' }, L('"'),  C('lua MiniExtra.pickers.registers()'),                   
 map({ 'n' }, L('/'),  C('lua MiniPick.builtin.grep_live()'),                      'Open ripgrep picker')
 --stylua: ignore end
 
+-- Subword navigation
+map({ 'n', 'o', 'x' }, 'b', C([[lua require('spider').motion('b')]]))
+map({ 'n', 'o', 'x' }, 'e', C([[lua require('spider').motion('e')]]))
+map({ 'n', 'o', 'x' }, 'w', C([[lua require('spider').motion('w')]]))
+
 -- Center next
 map({ 'n' }, 'n', 'nzzzv', 'Centre next match')
 map({ 'n' }, 'N', 'Nzzzv', 'Centre prev match')

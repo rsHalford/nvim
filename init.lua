@@ -235,12 +235,6 @@ later(function()
       gen_loader.from_file(config_path .. '/snippets/global.json'),
       gen_loader.from_lang(),
     },
-
-    -- NOTE: below mapping does not currently work
-    -- mapping = {
-    --   jump_next = '<C-n>',
-    --   jump_prev = '<C-p>',
-    -- },
   })
 
   MiniSnippets.start_lsp_server()
@@ -459,4 +453,5 @@ now_if_args(function()
   lsp_add('zls', { on_attach = custom_on_attach })
 end)
 
+later(function() add('chrisgrieser/nvim-spider') end)
 later(function() add('rafamadriz/friendly-snippets') end)
