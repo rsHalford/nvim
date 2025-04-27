@@ -376,6 +376,7 @@ now_if_args(function()
 
   lsp_add('bashls', { on_attach = custom_on_attach })
   lsp_add('biome', { on_attach = custom_on_attach })
+  lsp_add('cssls', { on_attach = custom_on_attach })
 
   lsp_add('elixirls', {
     on_attach = custom_on_attach,
@@ -405,6 +406,8 @@ now_if_args(function()
       },
     },
   })
+
+  lsp_add('html', { on_attach = custom_on_attach })
 
   lsp_add('lua_ls', {
     on_attach = function(client, bufnr)
@@ -453,6 +456,7 @@ now_if_args(function()
   lsp_add('ruby_lsp', { on_attach = custom_on_attach })
   lsp_add('taplo', { on_attach = custom_on_attach })
   lsp_add('templ', { on_attach = custom_on_attach })
+  lsp_add('ts_ls', { on_attach = custom_on_attach })
   lsp_add('zls', { on_attach = custom_on_attach })
 end)
 
