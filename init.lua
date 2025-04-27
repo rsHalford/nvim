@@ -450,7 +450,7 @@ now_if_args(function()
     },
   })
 
-  lsp_add('ruby_lsp', { on_attch = custom_on_attach })
+  lsp_add('ruby_lsp', { on_attach = custom_on_attach })
   lsp_add('taplo', { on_attach = custom_on_attach })
   lsp_add('templ', { on_attach = custom_on_attach })
   lsp_add('zls', { on_attach = custom_on_attach })
